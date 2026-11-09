@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6af1557844588ae9c79ca164a9535, type: 3}
+  m_Name: Level09_Hardening
+  m_EditorClassIdentifier:
+  title: "09 / Una cassa per gradino"
+  objective: "Spingi la cassa fino a farla indurire, poi saltaci sopra."
+  size: {x: 9, y: 4}
+  start: {x: 1, y: 1}
+  exit: {x: 7, y: 1}
+  terrain:
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  - {x: 4, y: 0}
+  - {x: 5, y: 0}
+  - {x: 6, y: 0}
+  - {x: 7, y: 0}
+  - {x: 8, y: 0}
+  slots: 3
+  cards:
+  - Type: 0
+    Value: 2
+    Quantity: 1
+  - Type: 1
+    Value: 1
+    Quantity: 1
+  - Type: 0
+    Value: 3
+    Quantity: 1
+  hasPortal: 0
+  extraRobots: []
+  devices:
+  - Id: "Cassa indurente"
+    Kind: 11
+    Cell: {x: 2, y: 1}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 1
+  - Id: "Blocco"
+    Kind: 8
+    Cell: {x: 5, y: 1}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  signalLinks: []

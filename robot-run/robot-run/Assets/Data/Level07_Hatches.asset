@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6af1557844588ae9c79ca164a9535, type: 3}
+  m_Name: Level07_Hatches
+  m_EditorClassIdentifier:
+  title: "07 / Sotto la fabbrica"
+  objective: "Usa i pulsanti per scendere e disattivare la trappola. Evita di fermarti sulla botola fragile."
+  size: {x: 10, y: 5}
+  start: {x: 1, y: 3}
+  exit: {x: 7, y: 1}
+  terrain:
+  - {x: 0, y: 2}
+  - {x: 1, y: 2}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  - {x: 4, y: 0}
+  - {x: 6, y: 0}
+  - {x: 7, y: 0}
+  - {x: 8, y: 0}
+  - {x: 9, y: 0}
+  slots: 1
+  cards:
+  - Type: 0
+    Value: 2
+    Quantity: 1
+  - Type: 0
+    Value: 4
+    Quantity: 1
+  - Type: 0
+    Value: 6
+    Quantity: 1
+  hasPortal: 0
+  extraRobots: []
+  devices:
+  - Id: "Pulsante discesa"
+    Kind: 3
+    Cell: {x: 2, y: 3}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  - Id: "Botola comandata"
+    Kind: 6
+    Cell: {x: 2, y: 2}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  - Id: "Piastra"
+    Kind: 1
+    Cell: {x: 3, y: 1}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  - Id: "Pulsante a scatto"
+    Kind: 2
+    Cell: {x: 4, y: 1}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  - Id: "Botola fragile"
+    Kind: 5
+    Cell: {x: 5, y: 0}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  - Id: "Trappola"
+    Kind: 7
+    Cell: {x: 6, y: 1}
+    InitiallyActive: 0
+    Direction: 0
+    Duration: 0
+  signalLinks:
+  - Source: "Pulsante discesa"
+    Target: "Botola comandata"
+    Inverted: 0
+  - Source: "Piastra"
+    Target: "Trappola"
+    Inverted: 1
+  - Source: "Pulsante a scatto"
+    Target: "Trappola"
+    Inverted: 1

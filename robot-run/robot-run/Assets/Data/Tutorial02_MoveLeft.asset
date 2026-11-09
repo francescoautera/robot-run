@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6af1557844588ae9c79ca164a9535, type: 3}
+  m_Name: Tutorial02_MoveLeft
+  m_EditorClassIdentifier:
+  title: "T02 / Muovi a sinistra"
+  objective: "Il robot percorre due celle verso sinistra."
+  size: {x: 8, y: 5}
+  start: {x: 5, y: 1}
+  exit: {x: 3, y: 1}
+  terrain:
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  - {x: 4, y: 0}
+  - {x: 5, y: 0}
+  - {x: 6, y: 0}
+  - {x: 7, y: 0}
+  slots: 1
+  cards:
+  - Type: 0
+    Value: 2
+    Quantity: 1
+  hasPortal: 0
+  portalA: {x: 0, y: 0}
+  portalB: {x: 0, y: 0}
+  portalPlate: {x: 0, y: 0}
+  tutorialDirection: -1
+  tutorialHeading: "Inverti la direzione"

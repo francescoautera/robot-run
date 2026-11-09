@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6af1557844588ae9c79ca164a9535, type: 3}
+  m_Name: Level02_Portal
+  m_EditorClassIdentifier: 
+  title: "02  /  Portale"
+  objective: "Passa sulla pedana, cadi nel portale e salta verso l'uscita."
+  size: {x: 12, y: 5}
+  start: {x: 1, y: 4}
+  exit: {x: 11, y: 2}
+  terrain:
+  - {x: 0, y: 3}
+  - {x: 1, y: 3}
+  - {x: 2, y: 3}
+  - {x: 3, y: 3}
+  - {x: 4, y: 0}
+  - {x: 7, y: 0}
+  - {x: 8, y: 0}
+  - {x: 9, y: 0}
+  - {x: 10, y: 0}
+  - {x: 11, y: 0}
+  - {x: 9, y: 1}
+  - {x: 10, y: 1}
+  - {x: 11, y: 1}
+  slots: 3
+  cards:
+  - Type: 0
+    Value: 2
+    Quantity: 1
+  - Type: 0
+    Value: 3
+    Quantity: 1
+  - Type: 1
+    Value: 1
+    Quantity: 1
+  hasPortal: 1
+  portalA: {x: 4, y: 1}
+  portalB: {x: 8, y: 1}
+  portalPlate: {x: 3, y: 4}

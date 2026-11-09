@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276cc82012504978a722ba3bb689af35, type: 3}
+  m_Name: DeviceTooltipText
+  m_EditorClassIdentifier:
+  portaleAttivo: "Portale attivo"
+  portaleSpento: "Portale spento"
+  pedanaPortalePronta: "Pedana monouso · attiva il portale"
+  pedanaPortaleAttiva: "Pedana monouso attivata"
+  nastro: "Nastro {direzione} · {stato}"
+  versoDestra: "a destra"
+  versoSinistra: "a sinistra"
+  statoAttivo: "attivo"
+  statoSpento: "spento"
+  piastra: "Piastra a pressione · {stato}"
+  piastraPremuta: "premuta"
+  piastraLibera: "libera"
+  pulsanteAScatto: "Pulsante a scatto · {stato}"
+  pulsanteMonouso: "Pulsante monouso · {stato}"
+  monousoPronto: "pronto"
+  monousoAttivato: "attivato"
+  pulsanteATimer: "Pulsante a timer · {durata} cicli"
+  botolaFragile: "Botola a cedimento · {stato}"
+  botolaComandata: "Botola comandata · {stato}"
+  botolaAperta: "aperta"
+  botolaChiusa: "chiusa"
+  botolaArmata: "armata"
+  botolaIntegra: "integra"
+  botolaInAttesa: "chiusura in attesa"
+  trappola: "Trappola · {stato}"
+  trappolaLetale: "letale"
+  trappolaSpenta: "spenta"
+  cassaMobile: "Cassa spostabile"
+  bloccoFisso: "Blocco immovibile"
+  cassaTnt: "Cassa TNT · esplode dopo {durata} cicli dalla prima spinta"
+  cassaIndurente: "Cassa indurente · si blocca dopo {durata} cicli dalla prima spinta"
+  cassaIndurita: "Cassa indurita · immovibile"
+  contatoreResiduo: "residuo {residuo}"
+  collegamenti: "Collegato a {collegamenti}"
+  collegamentoInvertito: "{oggetto} (invertito)"
+  nomePortale: "portale"
+  nomePedanaPortale: "pedana monouso"
