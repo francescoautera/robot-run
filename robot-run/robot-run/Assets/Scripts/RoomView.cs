@@ -173,11 +173,20 @@ namespace RobotRun
             if (roomCamera != null)
                 FrameRoom();
             UpdateBeltAnimations();
+            UpdateSignalPipes();
             UpdatePortalAnimation();
         }
 
         private void FrameRoom()
         {
+            if (menuPreview)
+            {
+                float previewHalfHeight = 6f / roomCamera.aspect;
+                roomCamera.orthographicSize = previewHalfHeight;
+                roomCamera.transform.position = new Vector3(6f, previewHalfHeight - 0.5f, -10f);
+                return;
+            }
+
             var center = ((Vector2)level.Size - Vector2.one) / 2f;
             float roomFraction = GameCanvasView.HeaderStart - GameCanvasView.ConsoleHeight;
             float halfHeight = Mathf.Max(level.Size.y / (2f * (roomFraction - 0.015f)),
@@ -261,7 +270,7 @@ namespace RobotRun
                 Destroy(effect.gameObject);
             }
             robot.gameObject.SetActive(true);
-            robot.localPosition = (Vector2)cell;
+            robot.localPosition = RobotSurfacePosition(cell);
             robot.localScale = Vector3.one;
             robotImage.sprite = neutralRobot;
             robotFocus.SetActive(false);
@@ -285,9 +294,17 @@ namespace RobotRun
             body.localRotation = Quaternion.identity;
         }
 
+        private Vector2 RobotSurfacePosition(Vector2Int cell)
+        {
+            const float conveyorHeight = 0.30f;
+            foreach (var device in level.Devices)
+                if (device.Kind == DeviceKind.Conveyor && device.Cell == cell)
+                    return (Vector2)cell + Vector2.up * conveyorHeight;
+            return cell;
+        }
         public void SnapToCell(Vector2Int cell)
         {
-            robot.localPosition = (Vector2)cell;
+            robot.localPosition = RobotSurfacePosition(cell);
             ResetPose();
             robotFocus.transform.localPosition = (Vector2)cell;
         }
@@ -379,13 +396,13 @@ namespace RobotRun
                 float arc = reducedMotion ? 0 : 4f * t * (1f - t);
                 if (motion.Kind == MotionKind.Teleport)
                 {
-                    robot.localPosition = (Vector2)(t < 0.5f ? motion.From : motion.To);
+                    robot.localPosition = RobotSurfacePosition(t < 0.5f ? motion.From : motion.To);
                     if (!reducedMotion)
                         body.localScale = Vector3.one * Mathf.Lerp(0.65f, 1f, Mathf.Abs(2f * t - 1f));
                 }
                 else
                 {
-                    var position = Vector2.Lerp(motion.From, motion.To, travel);
+                    var position = Vector2.Lerp(RobotSurfacePosition(motion.From), RobotSurfacePosition(motion.To), travel);
                     if (motion.Kind == MotionKind.Move)
                         position.y += arc * 0.24f;
 
@@ -409,7 +426,7 @@ namespace RobotRun
 
             for (float elapsed = 0; elapsed < duration; elapsed += Time.unscaledDeltaTime * speed())
             {
-                robot.localPosition = JumpPosition(start, crest, landing, elapsed / duration);
+                robot.localPosition = JumpPosition(RobotSurfacePosition(start), crest, RobotSurfacePosition(landing), elapsed / duration);
                 yield return null;
             }
 
@@ -426,7 +443,7 @@ namespace RobotRun
             {
                 float t = elapsed / duration;
                 float distance = cells * t * t;
-                robot.localPosition = (Vector2)start + Vector2.down * distance;
+                robot.localPosition = Vector2.Lerp(RobotSurfacePosition(start), RobotSurfacePosition(landing), t * t);
                 robotFocus.transform.localPosition = robot.localPosition;
                 while (crossed < Mathf.FloorToInt(distance))
                 {

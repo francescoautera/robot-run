@@ -71,6 +71,8 @@ namespace RobotRun
             if (level.HasLegacyPlate)
                 BuildWire("legacyPlate", "portal", level.PortalPlate, level.PortalA);
 
+            BuildSignalPipes();
+
             extraRobotViews = new SpriteRenderer[level.RobotStarts.Count - 1];
             for (int i = 0; i < extraRobotViews.Length; i++)
             {
@@ -141,7 +143,7 @@ namespace RobotRun
             {
                 var sprite = extraRobotViews[i];
                 var next = state.Robots[i + 1];
-                sprite.transform.localPosition = (Vector2)next.Cell;
+                sprite.transform.localPosition = RobotSurfacePosition(next.Cell);
                 if (state.StepNumber == 0)
                     sprite.transform.localScale = Vector3.one;
                 sprite.sprite = neutralRobot;
@@ -198,8 +200,8 @@ namespace RobotRun
                     bool teleport = motionKinds[i] == MotionKind.Teleport;
                     bool onBelt = motionKinds[i] == MotionKind.Conveyor;
                     bool falling = motionKinds[i] == MotionKind.Fall;
-                    var position = teleport ? (Vector2)(t < 0.5f ? from : to)
-                        : Vector2.Lerp(from, to, onBelt || falling ? t : blend);
+                    var position = teleport ? RobotSurfacePosition(t < 0.5f ? from : to)
+                        : Vector2.Lerp(RobotSurfacePosition(from), RobotSurfacePosition(to), onBelt || falling ? t : blend);
                     if (!reducedMotion && !teleport && !onBelt && from.y == to.y && from.x != to.x)
                         position.y += 0.17f * 4f * t * (1f - t);
                     var view = i == 0 ? robot : extraRobotViews[i - 1].transform;
@@ -261,7 +263,7 @@ namespace RobotRun
             foreach (var wire in signalViews)
             {
                 bool show = selected.Contains(wire.source) || selected.Contains(wire.target);
-                if (wire.line.activeSelf != show)
+                if (!pipedSignals.Contains(wire.line) && wire.line.activeSelf != show)
                     wire.line.SetActive(show);
                 if (show && wire.source != wire.target)
                 {

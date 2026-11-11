@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelAsset: {fileID: 11400000, guid: b9a198048e744ca3a46a13922278396b, type: 2}
-  otherScene: Level01_Jump
-  nextLevelCaption: "Torna al livello 01"
+  otherScene: MainMenu
+  nextLevelCaption: "Torna al menu"
   cardHoverScaleIncrease: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

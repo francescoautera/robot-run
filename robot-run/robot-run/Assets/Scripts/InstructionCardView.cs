@@ -84,6 +84,13 @@ namespace RobotRun
             direction.color = right ? accent : LeftAccent;
         }
 
+        internal void ShowMenuDirection(int side)
+        {
+            Show(new CardInstruction(0, CardType.Move, 3, side));
+            title.text = side < 0 ? "VAI A SINISTRA" : "VAI A DESTRA";
+            description.text = side < 0 ? "Raggiungi Esci" : "Raggiungi Inizia";
+            direction.text = side < 0 ? "Porta a sinistra" : "Porta a destra";
+        }
         internal void SetHandDrag(bool dragging)
         {
             opacity.alpha = dragging ? 0f : 1f;
